@@ -1,14 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import Nav from "./Nav";
 import HogTitle from "./HogTile";
 import HogGrid from "./HogGrid";
+import SearchBar from "./SearchBar";
 
 import hogs from "../porkers_data";
 
 function App() {
+	const [hogsToDisplay, setHogsToDisplay] = useState(hogs);
+	function filterBy(greased){
+		console.log({greased})
+		if(greased===true){
+			setHogsToDisplay(hogs.filter(hog=> hog.greased))
+			console.log(hogsToDisplay)
+
+		} else{
+			setHogsToDisplay(hogs.filter(hog=> !(hog.greased)))
+			console.log(hogsToDisplay)
+		}
+	}
 	return (
 		<div className="App">
 			<Nav />
+		<SearchBar filterBy={filterBy}/>
 			<HogGrid hogs={hogs}/>
 		</div>
 	);
