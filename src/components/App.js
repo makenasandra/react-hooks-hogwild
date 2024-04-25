@@ -9,22 +9,35 @@ import hogs from "../porkers_data";
 function App() {
 	const [hogsToDisplay, setHogsToDisplay] = useState(hogs);
 	function filterBy(greased){
-		
-		if(greased===true){
-			setHogsToDisplay(hogs.filter(hog=> hog.greased))
-			console.log(hogsToDisplay)
-			console.log("{greased}")
+		let filteredHogList = greased? hogs.filter(hog=> hog.greased): hogs;
 
+		setHogsToDisplay(filteredHogList)
+	}
+
+	function sortBy(formData){
+		const {selectedOption, search, greased} = formData;
+		
+		let hogsToDis = greased? hogs.filter(hog=> hog.greased): hogs;
+		if(selectedOption==="name"){
+			
+			setHogsToDisplay(hogsToDis.filter(hog=>{
+				console.log(hog.name.includes(search))
+				return hog.name.toLowerCase().includes(search)
+			}));
+			
+			// console.log(hogsToDisplay)
+			// console.log({selectedOption})
+		} else if(selectedOption==="weight"){
+			setHogsToDisplay(hogsToDis.filter(hog=> hog.weight.toString().includes(search)));
 		} else{
-			setHogsToDisplay(hogs)
-			console.log(hogsToDisplay)
-			console.log({greased})
+			setHogsToDisplay(hogs);
+
 		}
 	}
 	return (
 		<div className="App">
 			<Nav />
-		<SearchBar filterBy={filterBy}/>
+		<SearchBar filterBy={filterBy} sortBy={sortBy}/>
 			<HogGrid hogs={hogsToDisplay}/>
 		</div>
 	);

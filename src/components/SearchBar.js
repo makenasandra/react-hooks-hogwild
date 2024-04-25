@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import piggy from "../assets/porco.png";
 
-const SearchBar = ({filterBy}) => {
+const SearchBar = ({filterBy, sortBy}) => {
     const [formData, setFormData] = useState({ search: "", greased: false, selectedOption: "name" })
     const [selectedOption, setSelectedOption] = useState('name-option');
     
@@ -14,7 +14,6 @@ const SearchBar = ({filterBy}) => {
                 [name]: checked
             })
             filterBy(checked);
-        //    handleSearchSubmit(e)
         } else if (type === 'radio') {
             setFormData({
                 ...formData,
@@ -32,7 +31,7 @@ const SearchBar = ({filterBy}) => {
     }
     function handleSearchSubmit(e) {
         e.preventDefault();
-       
+        sortBy(formData);
     }
     return (
         <div >
