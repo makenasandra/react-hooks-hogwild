@@ -9,21 +9,23 @@ import hogs from "../porkers_data";
 function App() {
 	const [hogsToDisplay, setHogsToDisplay] = useState(hogs);
 	function filterBy(greased){
-		console.log({greased})
+		
 		if(greased===true){
 			setHogsToDisplay(hogs.filter(hog=> hog.greased))
 			console.log(hogsToDisplay)
+			console.log("{greased}")
 
 		} else{
-			setHogsToDisplay(hogs.filter(hog=> !(hog.greased)))
+			setHogsToDisplay(hogs)
 			console.log(hogsToDisplay)
+			console.log({greased})
 		}
 	}
 	return (
 		<div className="App">
 			<Nav />
 		<SearchBar filterBy={filterBy}/>
-			<HogGrid hogs={hogs}/>
+			<HogGrid hogs={hogsToDisplay}/>
 		</div>
 	);
 }

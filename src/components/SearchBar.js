@@ -4,15 +4,17 @@ import piggy from "../assets/porco.png";
 const SearchBar = ({filterBy}) => {
     const [formData, setFormData] = useState({ search: "", greased: false, selectedOption: "name" })
     const [selectedOption, setSelectedOption] = useState('name-option');
+    
     function handleSearchChange(e) {
         const { name, checked, value, type } = e.target;
 
-        if (name === 'greased') {
+        if (name === "greased") {
             setFormData({
                 ...formData,
                 [name]: checked
             })
-            filterBy(formData.greased);
+            filterBy(checked);
+        //    handleSearchSubmit(e)
         } else if (type === 'radio') {
             setFormData({
                 ...formData,
@@ -54,7 +56,7 @@ const SearchBar = ({filterBy}) => {
                 <div>
                     <label>Filter By: </label>
                     <label>
-                        <input type="checkbox" name="greased" value="Greased" checked={formData.greased} label="hj" onChange={handleSearchChange} />
+                        <input type="checkbox" name="greased" value="Greased" checked={formData.greased} onChange={handleSearchChange} />
                         Greased
                     </label>
                 </div>
