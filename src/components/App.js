@@ -3,6 +3,8 @@ import Nav from "./Nav";
 import HogTitle from "./HogTile";
 import HogGrid from "./HogGrid";
 import SearchBar from "./SearchBar";
+import HogForm from "./HogForm";
+import '../App.css'
 
 import hogs from "../porkers_data";
 
@@ -34,9 +36,13 @@ function App() {
 
 		}
 	}
+	function addHog(hog){
+		setHogsToDisplay([hog,...hogsToDisplay]);
+	}
 	return (
 		<div className="App">
 			<Nav />
+			<HogForm addHog={addHog}/>
 		<SearchBar filterBy={filterBy} sortBy={sortBy}/>
 			<HogGrid hogs={hogsToDisplay}/>
 		</div>

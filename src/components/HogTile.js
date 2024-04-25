@@ -4,9 +4,8 @@ import HogDetails from './HogDetails';
 import hogs from "../porkers_data";
 
 function HogTitle({hog}) {
-	const { name, image,specialty, weight, greased } = hog;
-	const highestMedalAchieved = hog["highest medal achieved"];
-
+	const { name, image } = hog;
+	const [showHog, setShowHog] = useState(true);
 	const [showHogDetails, setShowHogDetails] = useState(false);
 	const [currentHog, setCurrentHog] = useState();
 
@@ -20,7 +19,9 @@ function HogTitle({hog}) {
 		
 	return (
 		<div>
-			 
+			<button className="hide-button" onClick={()=>setShowHog(!showHog)}> {showHog? "Hide Hog": "Show Hog"}</button>
+			{showHog?
+			
 			<div key={name}  onClick={()=> handleShowDetailsClick(name)}>
 				<img src={image}/>
 				<ul>
@@ -28,7 +29,9 @@ function HogTitle({hog}) {
 				</ul>
 				{showHogDetails?<HogDetails hog={hog}/>: <></>}
 				
-			</div>
+			</div>:
+			<></>
+			}
 		
 		</div>
 	);
