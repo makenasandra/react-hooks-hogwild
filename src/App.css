@@ -1,8 +1,12 @@
 .hide-button{
-    margin-top: 15px;
-    margin-bottom: 7px;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 .hog-form{
     margin-top: 25px;
     margin-bottom: 37px;
+}
+.hog-info{
+    margin-top: 10px;
+    margin-bottom: 15px;
 }

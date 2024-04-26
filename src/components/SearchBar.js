@@ -37,7 +37,7 @@ const SearchBar = ({filterBy, sortBy}) => {
         <div >
             <form onSubmit={handleSearchSubmit}>
                 <input type="text" placeholder="Search" name="search" value={formData.search} onChange={handleSearchChange} />  {/* Search bar */}
-                <button type="submit">Search</button>
+                <button type="submit" class="ui primary button">Search</button>
                 <div>
                     <label>Sort By: </label>
                     <label>

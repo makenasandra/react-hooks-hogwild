@@ -6,7 +6,7 @@ import hogs from "../porkers_data";
 function HogGrid({hogs}) {
 	let hogList = hogs.map(hog =>  <HogTitle key={hog.name} hog={hog} />)
 	return (
-		<div>
+		<div class="ui link cards">
 			 
 			{hogList}
 		

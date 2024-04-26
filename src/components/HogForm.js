@@ -42,7 +42,7 @@ const HogForm = ({ addHog }) => {
                     <input type="checkbox" name="greased" value="Greased" checked={formData.greased} onChange={handleFormChange} />
                     Greased
                 </label>
-                <button type="submit">Add</button>
+                <button type="submit" class="ui inverted purple button">Add</button>
             </form>
         </div>
     );
